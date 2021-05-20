@@ -1,5 +1,5 @@
 from types import MethodType
-from flask import Flask,jsonify,request
+from flask import Flask, jsonify, request
 import sys
 
 from flask.templating import render_template
@@ -22,45 +22,40 @@ kernal.learn("brain/basic_chat.aiml")
 # kernal.learn("brain/computers.aiml")
 
 
-
-
-
 app = Flask(__name__)
 symtopms = []
 
 
+@app.route("/", methods=["POST", "GET"])
+def home():
+    return "ASDA"
 
 
-
-
-
-
-@app.route("/",methods=["POST","GET"])
-def  home():
-    if (request.method=="POST"):
-        userMessage = str(request.form["nm"])
-        if ((userMessage).lower() == "say"):
-            response = "You are suffering from: "; 
-            for x in range(len(symtopms)): 
-                    response = response +"<br>" + (symtopms[x])
-            return  jsonify({
-                "response":True,
-                "message":symtopms
-    }) 
-        response = (kernal.respond(userMessage)).upper()
-        listorwords = response.split(" ")
-        if(True):
-            if(len(listorwords)<3):
-                return "False"
-            elif((listorwords[3])=="SYMPTOMS"):
-                symtopms.append((listorwords[5]))
-                for x in range(len(symtopms)): 
-                    print(symtopms[x])
-            return  jsonify({
-                "status":200,
-                "response":True,
-                "message":str(kernal.respond(userMessage))
-    })
-    
+# @app.route("/",methods=["POST","GET"])
+# def  home():
+#     if (request.method=="POST"):
+#         userMessage = str(request.form["nm"])
+#         if ((userMessage).lower() == "say"):
+#             response = "You are suffering from: ";
+#             for x in range(len(symtopms)):
+#                     response = response +"<br>" + (symtopms[x])
+#             return  jsonify({
+#                 "response":True,
+#                 "message":symtopms
+#     })
+#         response = (kernal.respond(userMessage)).upper()
+#         listorwords = response.split(" ")
+#         if(True):
+#             if(len(listorwords)<3):
+#                 return "False"
+#             elif((listorwords[3])=="SYMPTOMS"):
+#                 symtopms.append((listorwords[5]))
+#                 for x in range(len(symtopms)):
+#                     print(symtopms[x])
+#             return  jsonify({
+#                 "status":200,
+#                 "response":True,
+#                 "message":str(kernal.respond(userMessage))
+#     })
 if __name__ == "__main__":
     app.run(debug=True)
