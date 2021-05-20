@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+
+
+    <category>
+        <pattern>MY NAME IS *</pattern>
+        <template>
+            <think>
+                <set name="name">
+                    <star index="1" />
+                </set>
+            </think>
+            Hey there
+            <get name="name"></get>
+            ,how may i help you
+        </template>
+    </category>
+    <category>
+        <pattern>MY NAME</pattern>
+        <template>
+            <!-- <think>
+                <set name="name">
+                    <star index="1" />
+                </set>
+            </think> -->
+            Hey there
+            <get name="name"></get>
+            ,how may i help you
+        </template>
+    </category>
+    <category>
+        <pattern>WHAT * NAME</pattern>
+        <template>
+            <random>
+                <li>
+                    As far as i remembered, your name is
+                    <get name="name"></get>
+                </li>
+                <li>
+                    <get name="name"></get>
+                    is your name
+                </li>
+            </random>
+        </template>
+
+    </category>
+
+
+    <category>
+        <pattern>HEY THERE</pattern>
+        <template>
+            <think>
+                <set name="topic">Query</set>
+            </think>
+            <random>
+                <li>I am Medicare, Are you sick</li>
+                <li>My name is Medicare, Are you sick!</li>
+                <li>People call me Medicare, Are you sick?</li>
+                <li>I am Medicare, Are you sick?</li>
+            </random>
+        </template>
+    </category>
+    <!-- FOLLOW UP -->
+    <!-- <topic name="QUERY"> -->
+    <category>
+        <that>* ARE YOU SICK</that>
+        <pattern>YES</pattern>
+        <template>
+            <think>
+                <set name="response">YES</set>
+                <set name="topic">symptoms</set>
+            </think>
+            What symptoms are you feeling?
+        </template>
+    </category>
+    <category>
+        <that>* ARE YOU SICK</that>
+        <pattern>NO</pattern>
+        <template>
+            <think>
+                <set name="topic">default</set>
+                <set name="response">NO</set>
+            </think>
+            That's Good, then how can i help you
+        </template>
+    </category>
+    <!-- </topic> -->
+
+
+    <!-- SYPMTOMS MEASURE-->
+    <!-- <topic name="SYMPTOMS"> -->
+    <category>
+        <pattern>I FEEL *</pattern>
+        <template>
+            <think>
+                <set name="topic">severity</set>
+                <set name="symptom">
+                    <star />
+                </set>
+            </think>
+            so you're having symptoms
+            <get name="symptom" />
+            , thats bad
+                How bad in scale of 1-10
+        </template>
+    </category>
+    <!-- </topic> -->
+
+
+    <!-- SEVERITY MEASUREMENT -->
+    <topic name="SEVERITY">
+        <category>
+            <pattern>1</pattern>
+            <template>
+                <think>
+                    <set name="topic">default</set>
+                </think>
+                That doesnt seem very bad
+            </template>
+        </category>
+        <category>
+            <pattern>3</pattern>
+            <template>
+                <think>
+                    <set name="topic">default</set>
+                </think>
+                You may consult a doctor
+            </template>
+        </category>
+        <category>
+            <pattern>5</pattern>
+            <template>
+                <think>
+                    <set name="topic">more investigation</set>
+                </think>
+                That's bad, want to continue
+            </template>
+        </category>
+        <category>
+            <pattern>6</pattern>
+            <template>
+                <srai>5</srai>
+            </template>
+        </category>
+        <category>
+            <pattern>7</pattern>
+            <template>
+                <srai>5</srai>
+            </template>
+        </category>
+        <category>
+            <pattern>8</pattern>
+            <template>
+                <srai>5</srai>
+            </template>
+        </category>
+        <category>
+            <pattern>9</pattern>
+            <template>
+                <srai>5</srai>
+            </template>
+        </category>
+        <category>
+            <pattern>10</pattern>
+            <template>
+                <srai>5</srai>
+            </template>
+        </category>
+    </topic>
+
+    <!-- MORE INVESTIGATION -->
+    <topic name="MORE INVESTIGATION">
+        <category>
+            <that>WANT TO DISCUSS MORE</that>
+            <pattern>YES</pattern>
+            <template>
+                <think>
+                    <set name="topic">persue case</set>
+                </think>
+                Want to call a doctor or visit a hospital
+            </template>
+        </category>
+        <category>
+            <that>WANT TO DISCUSS MORE</that>
+            <pattern>No</pattern>
+            <template>
+                <set name="topic">default</set>
+                but i would recommend atleast calling a doctor
+            </template>
+        </category>
+    </topic>
+
+
+    <!-- PERSUE CASE -->
+    <topic name="PERSUE CASE">
+        <category>
+            <that>WANT TO CALL A *</that>
+            <pattern>CALL</pattern>
+            <template>
+                <think>
+                    <set name="topic">doctor call</set>
+                </think>
+                We will call the doctor after this step
+            </template>
+        </category>
+        <category>
+            <that>WANT TO CALL A *</that>
+            <pattern>DOCTOR</pattern>
+            <template>
+                <srai>CALL</srai>
+            </template>
+        </category>
+        <category>
+            <that>WANT TO CALL A *</that>
+            <pattern>* DOCTOR</pattern>
+            <template>
+                <srai>CALL</srai>
+            </template>
+        </category>
+        <category>
+            <that>WANT TO CALL A *</that>
+            <pattern>HOSPITAL</pattern>
+            <template>
+                <think>
+                    <set name="topic">appointment hospital</set>
+                </think>
+                We are making an appointment now!
+            </template>
+        </category>
+    </topic>
+
+
+</aiml>
