@@ -6,7 +6,6 @@ from flask import Flask, jsonify, request
 import sys
 import numpy as np
 from tensorflow import keras
-model = keras.models.load_model('./')
 # import mimetypes
 # import logging
 # from console_log import ConsoleLog
@@ -34,9 +33,25 @@ symtopms = []
 
 KNOWN_SYMPTOMS = ['Nausea', 'vomiting', 'Rash', 'eye_pain', 'muscle_pain', 'bone_pain',
                   'Belly_pain', 'tenderness', 'Vomiting', 'Bleeding', 'Vomiting', 'Feeling_tired', 'restless']
+POSITIVE_DENGUE = "You may be suffering from Dengue"
+NEGATIVE_DENGUE = "Atleast you are not suffering from Dengue but take care or consult a doctor"
 
 
 User_Symptoms = np.zeros(13).tolist()
+
+
+def responseApi(response, message, extra):
+    return jsonify({
+        "response": response,
+        "message": message,
+        "things": extra
+    })
+
+# def runModel():
+#     return float((model.predict([User_Symptoms])[0][0]))
+
+
+MODEL = keras.models.load_model('./')
 
 
 @app.route("/", methods=["POST", "GET"])
@@ -47,33 +62,28 @@ def home():
             response = "You are suffering from: "
             for x in range(len(symtopms)):
                 response = response + "<br>" + (symtopms[x])
-            return jsonify({
-                "response": True,
-                "message": symtopms,
-                "things": User_Symptoms
-            })
+            return responseApi(True, symtopms, User_Symptoms)
+
         response = (kernal.respond(userMessage)).upper()
         listorwords = response.split(" ")
         if((userMessage).lower() == "model"):
-            return jsonify({
-                "response": True,
-                "message": "You may be suffering from Dengue" if(str(round(model.predict([User_Symptoms])[0][0])) == '1') else "Atleast you are not suffering from Dengue but take care or consult a doctor",
-                "things": str((model.predict([User_Symptoms])[0][0]))
-            })
+            modelResponse = MODEL.predict([User_Symptoms])[0][0]
+            if(str(round(modelResponse)) == '1'):
+                message = POSITIVE_DENGUE
+            else:
+                message = NEGATIVE_DENGUE
+            return responseApi(True, message, str(modelResponse))
+
         if(True):
             if(len(listorwords) < 3):
-                return "False"
+                return responseApi(False, str(kernal.respond(userMessage)), "")
             elif((listorwords[3]) == "SYMPTOMS"):
                 symtopms.append((listorwords[5]))
                 for x in range(len(symtopms)):
                     for i in range(len(KNOWN_SYMPTOMS)):
                         if(str(symtopms[x]).upper() == str(KNOWN_SYMPTOMS[i]).upper()):
                             User_Symptoms[i] = 1
-            return jsonify({
-                "status": 200,
-                "response": True,
-                "message": str(kernal.respond(userMessage))
-            })
+            return responseApi(True, str(kernal.respond(userMessage)), "")
 
 
 if __name__ == "__main__":
