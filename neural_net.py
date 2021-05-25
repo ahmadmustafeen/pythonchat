@@ -35,7 +35,7 @@ model.fit(X, y, epochs=10, batch_size=1)
 print(model.predict([[1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0]])[0][0])
 # print(y)
 
-
+model.save("./")
 # # mapping strings to numbers
 # le = preprocessing.LabelEncoder()
 # le.fit(y)
