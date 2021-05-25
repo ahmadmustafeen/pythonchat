@@ -7,15 +7,33 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier, _tree
 from sklearn.model_selection import train_test_split, cross_val_score
 
+from numpy import loadtxt
+from keras.models import Sequential
+from keras.layers import Dense
 
 training = pd.read_csv('./dengue.csv')
 testing = pd.read_csv('./test.csv')
 
-cols = training.columns
-cols = cols[:-1]
-x = training[cols]
-y = training['prognosis']
-print(y)
+
+# load the dataset
+dataset = loadtxt('dengue.csv', delimiter=',')
+# split into input (X) and output (y) variables
+X = dataset[:, 0:13]
+y = dataset[:, 13]
+model = Sequential()
+model.add(Dense(13, input_dim=13, activation='relu'))
+model.add(Dense(13, activation='relu'))
+model.add(Dense(13, activation='relu'))
+model.add(Dense(13, activation='relu'))
+model.add(Dense(13, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+
+model.compile(loss='binary_crossentropy',
+              optimizer='adam', metrics=['accuracy'])
+
+model.fit(X, y, epochs=10, batch_size=1)
+print(model.predict([[1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0]])[0][0])
+# print(y)
 
 
 # # mapping strings to numbers
