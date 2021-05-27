@@ -1,12 +1,5 @@
-import aiml
+import difflib
 
 
-kernal = aiml.Kernel()
-kernal.learn("./std-startup.xml")
-kernal.respond("load aiml b")
-
-
-while True:
-    input_text = input("Human> ")
-    response = kernal.respond(input_text)
-    print("Bot> "+response)
+print(difflib.get_close_matches("tedneeress", ['Nausea', 'vomiting', 'Rash', 'eye_pain', 'muscle_pain', 'bone_pain',
+                                               'Belly_pain', 'tenderness', 'Vomiting', 'Bleeding', 'Vomiting', 'Feeling_tired', 'restless']))
