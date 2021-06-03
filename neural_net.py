@@ -33,7 +33,7 @@ model.compile(loss='binary_crossentropy',
 
 model.fit(X, y, epochs=10, batch_size=1)
 print(model.predict(
-    [[1, 4, 1, 3, 1, 8, 1, 3, 1, 8, 1, 8, 1, 8, 0, 3, 1, 8, 1, 8, 0, 3]])[0][0])
+    [[1, 5, 1, 3, 1, 8, 1, 3, 1, 8, 1, 8, 1, 8, 0, 3, 1, 8, 1, 8, 0, 3]])[0][0])
 # print(y)
 
 model.save("./")
