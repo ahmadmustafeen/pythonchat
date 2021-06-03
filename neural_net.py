@@ -16,23 +16,24 @@ testing = pd.read_csv('./test.csv')
 
 
 # load the dataset
-dataset = loadtxt('dengue.csv', delimiter=',')
+dataset = loadtxt('dengue_with_severity.csv', delimiter=',')
 # split into input (X) and output (y) variables
-X = dataset[:, 0:13]
-y = dataset[:, 13]
+X = dataset[:, 0:22]
+y = dataset[:, 22]
 model = Sequential()
-model.add(Dense(13, input_dim=13, activation='relu'))
-model.add(Dense(13, activation='relu'))
-model.add(Dense(13, activation='relu'))
-model.add(Dense(13, activation='relu'))
-model.add(Dense(13, activation='relu'))
+model.add(Dense(22, input_dim=22, activation='relu'))
+model.add(Dense(22, activation='relu'))
+model.add(Dense(22, activation='relu'))
+model.add(Dense(22, activation='relu'))
+model.add(Dense(22, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 
 model.compile(loss='binary_crossentropy',
               optimizer='adam', metrics=['accuracy'])
 
 model.fit(X, y, epochs=10, batch_size=1)
-print(model.predict([[1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0]])[0][0])
+print(model.predict(
+    [[1, 4, 1, 3, 1, 8, 1, 3, 1, 8, 1, 8, 1, 8, 0, 3, 1, 8, 1, 8, 0, 3]])[0][0])
 # print(y)
 
 model.save("./")

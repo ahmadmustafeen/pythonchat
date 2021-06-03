@@ -76,34 +76,40 @@
             </think>
             <random>
                 <li>I am Medicare Are you sick!</li>
-                <li>My name is Medicare Are you sick!</li>
-                <li>People call me Medicare Are you sick?</li>
-                <li>I am Medicare Are you sick?</li>
             </random>
         </template>
     </category>
 
 
     <!-- FOLLOW UP -->
-    <!-- <topic name="QUERY"> -->
+    <topic name="QUERY">
+        <category>
+            <!-- <that>I AM MEDICARE ARE YOU SICK</that> -->
+            <pattern>YES</pattern>
+            <set name="response">yes</set>
+            <template>
+                Any Symptoms you are feeling?
+
+            </template>
+        </category>
+    </topic>
+
     <category>
-        <pattern>YES</pattern>
-        <that>* MEDICARE ARE YOU *</that>
+        <pattern>*</pattern>
         <template>
-            <!-- <think>
-                <set name="response">yes</set>
-                <set name="topic">symptoms</set>
-            </think> -->
-            <random>
-                <li>Any Symptoms you are feeling?</li>
-                <li>What symptoms are you feeling?</li>
-                <!-- <li>How do you feel</li> -->
-            </random>
+            <star></star>
+            <get name="topic" />
         </template>
     </category>
+    <!-- <category>
+        <pattern>*</pattern>
+        <template>
+            THS SAD TOIC
+            <get name="topic" />
+        </template>
+    </category> -->
 
-    <!-- </topic>
-
+    <!--
 
     <topic name="QUERY"> -->
     <category>
@@ -128,7 +134,7 @@
     <!-- SYPMTOMS MEASURE-->
     <!-- <topic name="SYMPTOMS"> -->
     <category>
-        <that>* SYMPTOMS * FEELING *</that>
+        <!-- <that>ANY SYMPTOMS YOU ARE FEELING</that> -->
         <pattern>I FEEL *</pattern>
         <template>
             <think>
@@ -252,7 +258,7 @@
     </category>
     <!-- </topic> -->
 
-    <category>
+    <!-- <category>
         <that>* WANT TO CONTINUE *</that>
         <pattern>YES</pattern>
         <template>
@@ -261,5 +267,5 @@
             </think>
             Want to call a dnnnnnoctor or visit a hospital
         </template>
-    </category>
+    </category> -->
 </aiml>
