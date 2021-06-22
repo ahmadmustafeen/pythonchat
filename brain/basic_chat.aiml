@@ -64,10 +64,7 @@
                 </li>
             </random>
         </template>
-
     </category>
-
-
     <category>
         <pattern>HEY THERE</pattern>
         <template>
@@ -93,14 +90,25 @@
             </template>
         </category>
     </topic>
-
+    <!-- 
     <category>
         <pattern>*</pattern>
         <template>
             <star></star>
+            <random>
+                <li>
+                Say the magical word Hey there to see the magic
+                </li>
+                <li>
+                To wake me up say Hey there
+                </li>
+                <li>
+                Try Hey there to see the magic
+                </li>
+            </random>
             <get name="topic" />
         </template>
-    </category>
+    </category> -->
     <!-- <category>
         <pattern>*</pattern>
         <template>
@@ -110,7 +118,6 @@
     </category> -->
 
     <!--
-
     <topic name="QUERY"> -->
     <category>
         <that>* MEDICARE ARE YOU *</that>
@@ -153,59 +160,69 @@
 
 
     <category>
-        <that>* HOW BAD IN SCALE OF *</that>
         <pattern>1</pattern>
+        <that>* HOW BAD IN SCALE OF *</that>
         <template>
             <think>
                 <set name="topic">default</set>
             </think>
-            That doesnt seem very bad
+            That doesnt seem very bad,any other symptoms
         </template>
     </category>
     <category>
-        <that>* HOW BAD IN SCALE OF *</that>
         <pattern>3</pattern>
+        <that>* HOW BAD IN SCALE OF *</that>
         <template>
             <think>
                 <set name="topic">default</set>
             </think>
-            You may consult a doctor
+            <srai>5</srai>
         </template>
     </category>
     <category>
+        <pattern>4</pattern>
         <that>* HOW BAD IN SCALE OF *</that>
+        <template>
+            <think>
+                <set name="topic">default</set>
+            </think>
+            <srai>5</srai>
+        </template>
+    </category>
+    <category>
         <pattern>5</pattern>
+        <that>* HOW BAD IN SCALE OF *</that>
         <template>
             <think>
                 <set name="topic">moreinvestigation</set>
             </think>
-            That's bad, want to continue
+            That's bad, any other symptoms
         </template>
     </category>
     <category>
-        <that>* HOW BAD IN SCALE OF *</that>
         <pattern>6</pattern>
+        <that>* HOW BAD IN SCALE OF *</that>
         <template>
             <srai>5</srai>
         </template>
     </category>
     <category>
-        <that>* HOW BAD IN SCALE OF *</that>
         <pattern>7</pattern>
+        <that>* HOW BAD IN SCALE OF *</that>
         <template>
             <srai>5</srai>
         </template>
     </category>
     <category>
-        <that>* HOW BAD IN SCALE OF *</that>
         <pattern>8</pattern>
+        <that>* HOW BAD IN SCALE OF *</that>
         <template>
             <srai>5</srai>
         </template>
     </category>
     <category>
-        <that>* HOW BAD IN SCALE OF *</that>
         <pattern>9</pattern>
+        <that>* HOW BAD IN SCALE OF *</that>
         <template>
             <srai>5</srai>
         </template>
@@ -219,6 +236,17 @@
     </category>
     <!-- </topic> -->
 
+
+    <category>
+        <that>*ANY OTHER SYMPTOMS</that>
+        <pattern>YES</pattern>
+        <template>What other symptoms you feel</template>
+    </category>
+    <category>
+        <that>*ANY OTHER SYMPTOMS</that>
+        <pattern>NO</pattern>
+        <template>NOW RUN MODEL</template>
+    </category>
 
     <!-- PERSUE CASE  -->
     <!-- <topic name="PERSUECASE"> -->

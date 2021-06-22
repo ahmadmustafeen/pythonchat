@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+    <category>
+        <pattern>HAVE YOU TAKEN ANY MEDICATION BEFORE</pattern>
+        <template>Have You Taken Any Medication Before in last 24 hours?</template>
+        <set NAME="topic">MEDICATION</set>
+    </category>
+
+
+    <topic NAME="MEDICATION">
+
+        <category>
+            <that>Have You Taken Any Medication Before in last 24 hours *</that>
+            <pattern>YES *</pattern>
+            <template>
+                <random>
+                    <li>can you list these medication here</li>
+                    <li>what are these medications include</li>
+                </random>
+            </template>
+        </category>
+        <category>
+            <that>* these medication *</that>
+            <pattern>THESE INCLUDES *</pattern>
+            <template>
+                So you took
+                <star></star>
+                , anything else in medication?
+            </template>
+        </category>
+        <category>
+            <that>*in medication *</that>
+            <pattern>THESE INCLUDES *</pattern>
+            <template>
+                So you took
+                <star></star>
+                , anything else in medication?
+            </template>
+        </category>
+        <category>
+            <that>*in medication *</that>
+            <pattern>NO</pattern>
+            <template>
+          Great that will be all
+        </template>
+        </category>
+
+
+    </topic>
+
+</aiml>

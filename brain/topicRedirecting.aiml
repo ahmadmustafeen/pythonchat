@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+
+
+    <!-- replying for greeting -->
+    <category>
+        <pattern>HEY THERE</pattern>
+        <template>
+            <random>
+                <li>How may i help you?</li>
+                <li>Hey there,How may i help you?</li>
+                <li>Hola,how are you feeling today?</li>
+                <li>with what i can help you with?</li>
+            </random>
+        </template>
+    </category>
+    <category>
+        <pattern>HELLOW</pattern>
+        <template>
+            <srai>HEY THERE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>HELLO</pattern>
+        <template>
+            <srai>HEY THERE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>GOOD MORNING</pattern>
+        <template>
+            <srai>HEY THERE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>GOOD EVENING</pattern>
+        <template>
+            <srai>HEY THERE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>GOOD AFTERNOON</pattern>
+        <template>
+            <srai>HEY THERE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>GOOD NIGHT</pattern>
+        <template>
+            <srai>HEY THERE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>LISTEN</pattern>
+        <template>
+            <srai>HEY THERE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>ANYONE THERE</pattern>
+        <template>
+            <srai>HEY THERE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>IS SOMEONE THERE</pattern>
+        <template>
+            <srai>HEY THERE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>??</pattern>
+        <template>
+            <srai>HEY THERE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>I NEED HELP</pattern>
+        <template>
+            <srai>HEY THERE</srai>
+        </template>
+    </category>
+</aiml>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+
+
+    <category>
+        <pattern>I AM SICK</pattern>
+        <template>
+            <random>
+                <li>
+That's bad, let us narrow down what are you feeling
+</li>
+                <li>
+Tell me more about how are you feeling
+</li>
+
+            </random>
+        </template>
+    </category>
+
+
+    <category>
+        <that>* are you feeling</that>
+        <pattern>I FEEL *</pattern>
+        <template>
+            <random>
+                <li>
+                    OK so you feel
+                    <star />
+                    ,in scale of 1-10 how bad it is?
+                </li>
+            </random>
+        </template>
+    </category>
+
+
+    <category>
+        <that>* scale of 1-10 how bad it is</that>
+        <pattern>*</pattern>
+        <template>
+            <random>
+                <li>Okk, any other symptoms you're feeling</li>
+            </random>
+        </template>
+    </category>
+
+    <!-- <category>
+        <that>* any other symptoms you're feeling</that>
+        <pattern>*</pattern>
+        <template>
+            <srai>
+                I FEEL
+                <star></star>
+            </srai>
+        </template>
+    </category> -->
+</aiml>

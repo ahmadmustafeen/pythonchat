@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+    <!-- AGE  -->
+    <category>
+        <pattern>WHAT IS YOUR AGE</pattern>
+        <template>
+            <random>
+                <li>How old are you?</li>
+                <li>What is your age?</li>
+                <li>Your Age?</li>
+            </random>
+        </template>
+    </category>
+    <category>
+        <pattern>WHAT AGE *</pattern>
+        <template>
+            <srai>WHAT IS YOUR AGE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>HOW AGE *</pattern>
+        <template>
+            <srai>WHAT IS YOUR AGE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>WHY AGE *</pattern>
+        <template>
+            <srai>WHAT IS YOUR AGE</srai>
+        </template>
+    </category>
+
+    <!-- <set name="topic">DEFAULT</set> -->
+    <!-- GETTING AGE -->
+    <category>
+        <that>* age</that>
+        <pattern>*</pattern>
+        <template>
+            OK so you're
+            <star></star>
+            years old
+        </template>
+    </category>
+    <set NAME="topic">default</set>
+
+    <!-- GENDER -->
+    <category>
+        <pattern>WHAT IS YOUR GENDER</pattern>
+        <template>
+            <set NAME="topic">GENDER</set>
+            <random>
+                <li>What is your gender?</li>
+                <li>Write your gender M for male or F for female</li>
+                <li>Your Gender</li>
+            </random>
+        </template>
+    </category>
+
+
+    <topic NAME="GENDER">
+        <category>
+            <pattern>WHAT GENDER *</pattern>
+            <template>
+                <srai>WHAT IS YOUR GENDER</srai>
+            </template>
+        </category>
+        <category>
+            <pattern>HOW GENDER *</pattern>
+            <template>
+                <srai>WHAT IS YOUR GENDER</srai>
+            </template>
+        </category>
+        <category>
+            <pattern>WHY GENDER *</pattern>
+            <template>
+                <srai>WHAT IS YOUR GENDER</srai>
+            </template>
+        </category>
+        <category>
+            <that> *Your Gender is*</that>
+            <pattern>* CHANGE GENDER *</pattern>
+            <template>
+                <srai>WHAT IS YOUR GENDER</srai>
+            </template>
+        </category>
+
+        <!-- GETTING GENDER -->
+        <category>
+            <that>* gender</that>
+            <pattern>M</pattern>
+            <template>
+           Your gender is Male
+        </template>
+        </category>
+        <category>
+            <that>* gender</that>
+            <pattern>MALE</pattern>
+            <template>
+           Your gender is Male
+        </template>
+        </category>
+        <category>
+            <that>* gender</that>
+            <pattern>F</pattern>
+            <template>
+           Your gender is Female
+        </template>
+        </category>
+        <category>
+            <that>* gender</that>
+            <pattern>FEMALE</pattern>
+            <template>
+           Your gender is Female
+        </template>
+        </category>
+        <!-- <category>
+            <that>* gender</that>
+            <pattern>*</pattern>
+            <template>
+           Please Write Male or Female or write M or F
+        </template>
+        </category> -->
+
+
+    </topic>
+</aiml>
