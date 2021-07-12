@@ -8,14 +8,14 @@ import numpy as np
 from tensorflow import keras
 import difflib
 kernal = aiml.Kernel()
-# for filename in os.listdir("brain"):
-#     if filename.endswith(".aiml"):
-#         kernal.learn("brain/"+filename)
+for filename in os.listdir("brain"):
+    if filename.endswith(".aiml"):
+        kernal.learn("brain/"+filename)
 # kernal.learn("brain/basic_chat.aiml")
-kernal.learn("brain/basicinfo.aiml")
-kernal.learn("brain/topicRedirecting.aiml")
-kernal.learn("brain/medicationInfo.aiml")
-kernal.learn("brain/SymtpomsTackling.aiml")
+# kernal.learn("brain/basicinfo.aiml")
+# kernal.learn("brain/topicRedirecting.aiml")
+# kernal.learn("brain/medicationInfo.aiml")
+# kernal.learn("brain/SymtpomsTackling.aiml")
 
 
 app = Flask(__name__)
